@@ -20,8 +20,6 @@ def assemble_file(code: str, address: str):
     out_path.write_text(code)
 
 def main(address: str):
-    # address = "0x804f398B7a528370c7c29058D8799D9fB2919a94"
-    # address = "0xFc1840b250F81C88491F4C420f2b98c7430Ebd4e"
     response = fetcher.fetch_source_code_response(address)
     apparent_source_code = response["result"][0]["SourceCode"]
     
