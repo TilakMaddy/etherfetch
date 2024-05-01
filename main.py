@@ -11,6 +11,8 @@ def assemble_files_from_json(code: str, address: str):
         p = Path(f"downloads") / Path(f"{address}/{filename}")
         p.parent.mkdir(parents=True, exist_ok=True)
         p.write_text(content["content"])
+    r = Path(f"downloads") / Path(f"{address}/remappings")
+    r.write_text("\n".join(result["settings"]["remappings"]))
 
 def assemble_file(code: str, address: str):
     out_path = Path("downloads") / Path(f"{address}") / Path(f"contract.sol")
@@ -30,6 +32,8 @@ def main(address: str):
         assemble_files_from_json(apparent_source_code, address)    
     else:
         assemble_file(apparent_source_code, address)
+
+    print(f"Contracts written to downloads/{address}")
     
 
 if __name__ == "__main__":

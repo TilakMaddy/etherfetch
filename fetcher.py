@@ -7,5 +7,6 @@ def fetch_source_code_response(address):
     load_dotenv()
     api_key = os.environ["ETHERSCAN_API_KEY"]
     url = f"https://api.etherscan.io/api?module=contract&action=getsourcecode&address={address}&apikey={api_key}"
+    print("Making request to ", url)
     response = json.loads(requests.get(url).content)
     return response
